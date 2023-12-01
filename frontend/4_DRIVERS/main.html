@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./resource/style.css" media="screen" />
+    <script src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDw5fG8qg1YEwGmOIePa2qZwCMugf04iwI&sensor=false"></script>
+    <link rel="stylesheet" href="./resource/login.css" />
+    <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>DRIVER</title>
+  </head>
+  <body >
+    <div id="app">
+        
+      <div  id="div_google_map">
+        <div class="wraper">
+          <div style="height:7vh; background-color: lightgreen ">
+              <img style="width:68px; height:auto; padding: 5px; " src="./resource/go-viet-grab.jpg" alt="">
+              <span style="float:right; text-decoration: underline; padding-top: 5px; padding-right: 5px"><button v-on:click='logout()' id='btn-logout'>Sign out</button></span>
+
+              <span style="float:right; margin-right: 15vw; padding: 5px; font-weight: bold; font-size: 20px">Driver App</span>
+
+          </div>
+          <div style="height:7vh">
+           <button style="display: inline-block; height: 6vh; " v-bind:class="[statusType.str]">{{statusType.lb}}</button>  
+           <label class="switch">
+            <input style="margin: auto" type="checkbox" @click="onClickChangStatus()" v-model="status_checked" id="checkbox_stt">
+            <span class="slider round"></span>
+          </label> 
+          <span v-if="user_wasfound">{{user_wasfound.address}}</span>
+          <span v-if="!user_wasfound && !status_checked"> No user found !</span>
+         </div>
+         <div style="height:7vh">
+           <input id="driver-address" type="text" style="height: 4vh; margin: auto; border: 1px solid black" placeholder="Nhập vị trí của bạn ">
+           <button v-on:click='setLocation()'  style="height: 4vh; margin: auto; border: 1px solid black" >Định vị</button>
+         </div>
+          <div class="google-map-area div-erea-parent">
+            <div id="googleMap" style="width:100%; height:50vh;"></div>
+            <div v-if='found_user' class="floating-panel">
+              <span>Find a customer request !</span>
+              <input id="btn_accept" type="button" @click="DeclineUser()" value="Accept">
+              <input id="btn_decline" type="button" @click="AcceptUser()" value="Decline">
+
+          </div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+      
+    </div>
+    <script src="./resource/socket.io.js"></script>
+    <script src="./resource/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>

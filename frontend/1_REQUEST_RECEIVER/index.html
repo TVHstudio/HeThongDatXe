@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+
+    if(localStorage.token_key && localStorage.ref_token && localStorage.uid){
+
+         axios({
+         method: "post",
+         url: "http://127.0.0.1:1234/api/user/auth",
+         data: {          
+         },
+         headers: {
+           "x-access-token" :  localStorage.token_key
+         }
+       }).then((data)=>{
+         window.location.href = "main.html";
+       })
+       .catch(err=>{
+         axios({
+          method: "post",
+         url: "http://127.0.0.1:1234/api/authen/new_token",
+         data: {   
+          ref_token : localStorage.ref_token,
+          id :  localStorage.uid      
+         },
+
+         }).then(user=>{
+            window.localStorage.token_key = user.data.access_token;
+            window.location.href = "main.html";
+         }).catch(err=>{
+          window.addEventListener("load", functionLogin );
+         });
+       });
+      }
+      else {
+        window.addEventListener("load", functionLogin );
+      }
+
+     function functionLogin(){              
+                document.getElementById("login_user").onclick = function() {
+                axios({
+                  method: "post",
+                  url: "http://127.0.0.1:1234/api/authen/login",
+                  data: {
+                    username: document.getElementById("frm-username").value,
+                    password: document.getElementById("frm-password").value,
+                    type : -1
+                  }
+                })
+                  .then(function(res) {
+                      window.localStorage.ref_token = res.data.refresh_token;
+                      window.localStorage.token_key =res.data.access_token;
+                      window.localStorage.uid = res.data.user.uid;
+                      window.localStorage.user_type = res.data.user.type;
+                      window.location.href = 'main.html';
+                      app.isLogin = true;
+                  })
+                  .catch(function(err) {
+                    console.log(err);
+                  });
+            };
+              
+          }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./resource/login.css" />
+    <title>LOGIN</title>
+</head>
+<body>
+  <div id="app">
+    <div v-if="!isLogin">
+    <div  class="header"><h2>Login</h2></div>
+        <form id="formLogin">
+          <div class="input-group">
+            <label>Username</label>
+            <input id="frm-username" type="text" name="username" />
+          </div>
+          <div class="input-group">
+            <label>Password</label>
+            <input id="frm-password" type="password" name="password" />
+          </div>
+          <div class="input-group">
+            <button type="button" class="btn" id="login_user">Login</button>
+          </div>
+          
+            <p>
+                Not yet a member? <a href="signup.html">Sign up</a>
+            </p>
+         
+        </form>
+      </div>
+</div>
+</div>
+
+</body>
+</html>

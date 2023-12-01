@@ -1,0 +1,93 @@
+/*Using CSS for table*/
+.table-display-req {
+  float: left;
+}
+.google-map-area {
+  float: right;
+}
+.div-erea-parent {
+  display: block;
+  border: 0.2px solid red;
+  width: 49%;
+}
+.demotbl {
+  border: 0px solid #69899f;
+  margin: auto;
+}
+.demotbl th {
+  width: 100px;
+  padding: 10px;
+  color: #fff;
+  text-shadow: 1px 1px 1px #568f23;
+  border-bottom: 3px solid #9ed929;
+  background-color: #9dd929;
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.02, rgb(123, 192, 67)),
+    color-stop(0.51, rgb(139, 198, 66)),
+    color-stop(0.87, rgb(158, 217, 41))
+  );
+  background: -moz-linear-gradient(
+    center bottom,
+    rgb(123, 192, 67) 3%,
+    rgb(139, 198, 66) 52%,
+    rgb(158, 217, 41) 88%
+  );
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius: 5px 5px 0px 0px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.demotbl td {
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+  vertical-align: top;
+  background-color: #def3ca;
+  border: 1px solid #bed3ab;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  color: #666;
+  text-shadow: 1px 1px 1px #fff;
+}
+.demotbl tbody {
+  display: block;
+  overflow: auto;
+  height: 500px;
+  width: 100%;
+}
+.demotbl thead tr {
+  display: block;
+}
+.demotbl .sst1 {
+  background-color: purple !important;
+}
+.demotbl .sst0 {
+  background-color: red !important;
+}
+.demotbl .sst2 {
+  background-color: blue !important;
+}
+.demotbl .sst3 {
+  background-color: #def3ca !important;
+}
+.demotbl #id-col-50 {
+  width: 50px !important;
+}
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 60%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: "Roboto", "sans-serif";
+  line-height: 30px;
+  padding-left: 10px;
+}

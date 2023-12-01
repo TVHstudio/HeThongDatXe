@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./resource/style.css" media="screen" />
+    <script src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDw5fG8qg1YEwGmOIePa2qZwCMugf04iwI&sensor=false"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>LOCATION MANAGEMENT</title>
+</head>
+<body>
+    <div id="app">     
+            <div  style="height:50px">	<span style="float:right"><button v-on:click='logout()' id='btn-logout'>Sign out</button></span>
+            </div>
+        <div class="wraper">
+                <div class="table-display-req div-erea-parent">
+                        <table class="demotbl">
+                                <thead>
+                                    <tr>
+                                        <th id='id-col-50'> ID</th>
+                                        <th> Name/Phone</th>
+                                        <th> Address</th>
+                                        <th> Time</th>
+                                        <th> Note</th>
+                                        <th> Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id='display-row'  v-for="req in requests">
+                                        <td id='id-col-50'>{{req.id}}</td>
+                                        <td>{{req.name}}-{{req.phone}}</td>
+                                        <td>{{req.address}}</td>
+                                        <td>{{req.date}}</td>
+                                        <td class="tooltip">{{req.note_trim}} <span class="tooltiptext">{{req.note}}</span></td>
+                                        <td v-bind:class="{'sst1': (req.status == 1), 'sst2': (req.status == 2), 'sst0': (req.status == 0), 'sst3': (req.status == 3)}">
+                                            {{req.status_string}}
+                                            <button v-if="req.status == 2" @click="viewRide()">Đường đi</button>
+                                        </td>
+                                    </tr>
+                                </tbody>     
+                        </table>
+                </div>
+                <div class="google-map-area div-erea-parent">
+                    <div class="floating-panel">
+                        <input id="address" type="textbox" value="227 Nguyễn Văn Cừ, p4, q5">
+                        <input id="submit" type="button" value="Search">
+                    </div>
+                    <div id="googleMap" style="width:100%;height:550px;"></div>
+                </div>
+            </div>  
+    </div>  
+    <script src="./resource/socket.io.js"></script>
+    <script src="./resource/vue.js"></script>
+    <script src="./main.js"></script>
+
+</body>
+</html>

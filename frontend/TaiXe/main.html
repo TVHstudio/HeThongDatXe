@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./resource/style.css" media="screen" />
-    <script src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDw5fG8qg1YEwGmOIePa2qZwCMugf04iwI&sensor=false"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyAfmHNt1i2ecPyNDnj2arim4C9xWVS9CJM&sensor=false"></script>
     <link rel="stylesheet" href="./resource/login.css" />
     <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -18,9 +18,7 @@
         <div class="wraper">
           <div style="height:7vh; background-color: lightgreen ">
               <span style="float:right; text-decoration: underline; padding-top: 5px; padding-right: 5px"><button v-on:click='logout()' id='btn-logout'>Sign out</button></span>
-
               <span style="float:right; margin-right: 15vw; padding: 5px; font-weight: bold; font-size: 20px">Driver App</span>
-
           </div>
           <div style="height:7vh">
            <button style="display: inline-block; height: 6vh; " v-bind:class="[statusType.str]">{{statusType.lb}}</button>  
@@ -41,7 +39,6 @@
               <span>Find a customer request !</span>
               <input id="btn_accept" type="button" @click="DeclineUser()" value="Accept">
               <input id="btn_decline" type="button" @click="AcceptUser()" value="Decline">
-
           </div>
           </div>
           <div></div>
